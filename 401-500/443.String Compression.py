@@ -15,6 +15,10 @@ class Solution(object):
         while len(chars) > y: chars.pop()
         return y
 '''
+我的方法不满足空间复杂度O(1)
+O(n)
+
+
 class Solution(object):
     def compress(self, chars):
     	lenc=len(chars)
