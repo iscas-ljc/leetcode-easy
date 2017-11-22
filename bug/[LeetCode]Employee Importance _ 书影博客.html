@@ -1,0 +1,5473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0069)http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/ -->
+<html xml:lang="zh-CN" lang="zh-CN" version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+    
+    <title>[LeetCode]Employee Importance | 书影博客</title>
+    
+    <meta http-equiv="cache-control" content="public">
+    <meta name="robots" content="follow, all">
+    <meta name="baidu_union_verify" content="31504e1b31c6fcf4cbc34cf3191bd320">
+    <meta name="language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="leetcode">
+    <meta name="description" content="题目描述： LeetCode 690. Employee Importance You are given a data structure of employee information, which includes the employee&amp;#39;s unique id, his importance value and his direct subordinates&amp;#39; id. For example, employee 1 is the leader of employee 2, and employee 2 is the leader of employee 3. They have importance...">
+    
+    <meta name="generator" content="Zinnia 0.15.2">
+
+    <link rel="pingback" href="http://bookshadow.com/xmlrpc/">
+    <link rel="home" href="http://bookshadow.com/weblog/">
+
+    <!-- <link rel="stylesheet" href="http://bookshadow.qiniudn.com/highlightjs/8.0/styles/default.min.css" /> -->
+    <link rel="stylesheet" href="./[LeetCode]Employee Importance _ 书影博客_files/default.min.css">
+    <!--[if lt IE 9]>
+        <script src="/static/zinnia_bootstrap/assets/js/html5shiv.js"></script>
+        <script src="/static/zinnia_bootstrap/assets/js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="http://bookshadow.com/static/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://bookshadow.com/static/zinnia_bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://bookshadow.com/static/zinnia_bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://bookshadow.com/static/zinnia_bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://bookshadow.com/static/zinnia_bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+    
+  
+
+    <link rel="index" href="http://bookshadow.com/weblog/">
+    <link rel="author" type="text/plain" href="http://bookshadow.com/weblog/humans.txt">
+    <link rel="EditURI" type="application/rsd+xml" href="http://bookshadow.com/weblog/rsd.xml">
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://bookshadow.com/weblog/wlwmanifest.xml">
+    <link rel="search" type="application/opensearchdescription+xml" title="Zinnia&#39;s Weblog" href="http://bookshadow.com/weblog/opensearch.xml">
+    <link rel="alternate" type="application/rss+xml" title="RSS feed of latest entries" href="http://bookshadow.com/weblog/feeds/">
+    <link rel="alternate" type="application/rss+xml" title="RSS feed of latest discussions" href="http://bookshadow.com/weblog/feeds/discussions/">
+    
+<link rel="archives" title="归档 2017年11月" href="http://bookshadow.com/weblog/2017/11/">
+<link rel="archives" title="归档 2017年10月" href="http://bookshadow.com/weblog/2017/10/">
+<link rel="archives" title="归档 2017年9月" href="http://bookshadow.com/weblog/2017/09/">
+<link rel="archives" title="归档 2017年8月" href="http://bookshadow.com/weblog/2017/08/">
+<link rel="archives" title="归档 2017年7月" href="http://bookshadow.com/weblog/2017/07/">
+<link rel="archives" title="归档 2017年6月" href="http://bookshadow.com/weblog/2017/06/">
+<link rel="archives" title="归档 2017年5月" href="http://bookshadow.com/weblog/2017/05/">
+<link rel="archives" title="归档 2017年4月" href="http://bookshadow.com/weblog/2017/04/">
+<link rel="archives" title="归档 2017年3月" href="http://bookshadow.com/weblog/2017/03/">
+<link rel="archives" title="归档 2017年2月" href="http://bookshadow.com/weblog/2017/02/">
+<link rel="archives" title="归档 2017年1月" href="http://bookshadow.com/weblog/2017/01/">
+<link rel="archives" title="归档 2016年12月" href="http://bookshadow.com/weblog/2016/12/">
+<link rel="archives" title="归档 2016年11月" href="http://bookshadow.com/weblog/2016/11/">
+<link rel="archives" title="归档 2016年10月" href="http://bookshadow.com/weblog/2016/10/">
+<link rel="archives" title="归档 2016年9月" href="http://bookshadow.com/weblog/2016/09/">
+<link rel="archives" title="归档 2016年8月" href="http://bookshadow.com/weblog/2016/08/">
+<link rel="archives" title="归档 2016年7月" href="http://bookshadow.com/weblog/2016/07/">
+<link rel="archives" title="归档 2016年6月" href="http://bookshadow.com/weblog/2016/06/">
+<link rel="archives" title="归档 2016年5月" href="http://bookshadow.com/weblog/2016/05/">
+<link rel="archives" title="归档 2016年4月" href="http://bookshadow.com/weblog/2016/04/">
+<link rel="archives" title="归档 2016年3月" href="http://bookshadow.com/weblog/2016/03/">
+<link rel="archives" title="归档 2016年2月" href="http://bookshadow.com/weblog/2016/02/">
+<link rel="archives" title="归档 2016年1月" href="http://bookshadow.com/weblog/2016/01/">
+<link rel="archives" title="归档 2015年12月" href="http://bookshadow.com/weblog/2015/12/">
+<link rel="archives" title="归档 2015年11月" href="http://bookshadow.com/weblog/2015/11/">
+<link rel="archives" title="归档 2015年10月" href="http://bookshadow.com/weblog/2015/10/">
+<link rel="archives" title="归档 2015年9月" href="http://bookshadow.com/weblog/2015/09/">
+<link rel="archives" title="归档 2015年8月" href="http://bookshadow.com/weblog/2015/08/">
+<link rel="archives" title="归档 2015年7月" href="http://bookshadow.com/weblog/2015/07/">
+<link rel="archives" title="归档 2015年6月" href="http://bookshadow.com/weblog/2015/06/">
+<link rel="archives" title="归档 2015年5月" href="http://bookshadow.com/weblog/2015/05/">
+<link rel="archives" title="归档 2015年4月" href="http://bookshadow.com/weblog/2015/04/">
+<link rel="archives" title="归档 2015年3月" href="http://bookshadow.com/weblog/2015/03/">
+<link rel="archives" title="归档 2015年2月" href="http://bookshadow.com/weblog/2015/02/">
+<link rel="archives" title="归档 2015年1月" href="http://bookshadow.com/weblog/2015/01/">
+<link rel="archives" title="归档 2014年12月" href="http://bookshadow.com/weblog/2014/12/">
+<link rel="archives" title="归档 2014年11月" href="http://bookshadow.com/weblog/2014/11/">
+<link rel="archives" title="归档 2014年10月" href="http://bookshadow.com/weblog/2014/10/">
+<link rel="archives" title="归档 2014年9月" href="http://bookshadow.com/weblog/2014/09/">
+<link rel="archives" title="归档 2014年8月" href="http://bookshadow.com/weblog/2014/08/">
+<link rel="archives" title="归档 2014年7月" href="http://bookshadow.com/weblog/2014/07/">
+<link rel="archives" title="归档 2014年6月" href="http://bookshadow.com/weblog/2014/06/">
+<link rel="archives" title="归档 2014年5月" href="http://bookshadow.com/weblog/2014/05/">
+<link rel="archives" title="归档 2014年4月" href="http://bookshadow.com/weblog/2014/04/">
+<link rel="archives" title="归档 2014年3月" href="http://bookshadow.com/weblog/2014/03/">
+<link rel="archives" title="归档 2014年2月" href="http://bookshadow.com/weblog/2014/02/">
+
+
+
+
+  
+  <link rel="prev" title="[LeetCode]Redundant Connection II" href="http://bookshadow.com/weblog/2017/09/26/leetcode-redundant-connection-ii/">
+  
+  
+  <link rel="next" title="[LeetCode]Repeated String Match" href="http://bookshadow.com/weblog/2017/10/01/leetcode-repeated-string-match/">
+  
+  <link rel="shortlink" href="http://bookshadow.com/weblog/715/">
+  <link rel="canonical" href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/">
+  
+  <link rel="alternate" type="application/rss+xml" title="RSS feed of discussions on [LeetCode]Employee Importance" href="http://bookshadow.com/weblog/feeds/discussions/2017/09/30/leetcode-employee-importance/">
+  <link rel="alternate" type="application/rss+xml" title="RSS feed of comments on [LeetCode]Employee Importance" href="http://bookshadow.com/weblog/feeds/comments/2017/09/30/leetcode-employee-importance/">
+  <link rel="alternate" type="application/rss+xml" title="RSS feed of pingbacks on [LeetCode]Employee Importance" href="http://bookshadow.com/weblog/feeds/pingbacks/2017/09/30/leetcode-employee-importance/">
+  <link rel="alternate" type="application/rss+xml" title="RSS feed of trackbacks on [LeetCode]Employee Importance" href="http://bookshadow.com/weblog/feeds/trackbacks/2017/09/30/leetcode-employee-importance/">
+  
+
+    
+
+
+<style>
+
+</style>
+<script src="./[LeetCode]Employee Importance _ 书影博客_files/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="./[LeetCode]Employee Importance _ 书影博客_files/bootstrap.min.js"></script>
+<link href="./[LeetCode]Employee Importance _ 书影博客_files/bootstrap.min.css" rel="stylesheet">
+<!--<script src="http://libs.useso.com/js/bootstrap/3.0.3/js/bootstrap.min.js"></script>-->
+<!--<link href="http://libs.useso.com/js/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />-->
+<link rel="stylesheet" href="./[LeetCode]Employee Importance _ 书影博客_files/jquery.fancybox.css" type="text/css" media="screen">
+<link rel="stylesheet" href="./[LeetCode]Employee Importance _ 书影博客_files/style-min.css">
+<script src="./[LeetCode]Employee Importance _ 书影博客_files/share.js"></script><style type="text/css">.fancybox-margin{margin-right:17px;}</style><link rel="stylesheet" href="./[LeetCode]Employee Importance _ 书影博客_files/share_style0_24.css"></head>
+
+<body>
+	
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://bookshadow.com/">书影</a>
+    </div>
+    <div class="collapse navbar-collapse" id="top-navbar">
+        <ul class="nav navbar-nav">
+            <li navname="weblog" class="active"><a href="http://bookshadow.com/">博客</a></li>
+            <li catname="LeetCode"><a href="http://bookshadow.com/leetcode/" style="color:#FEE680">LeetCode题解</a></li>
+            <li navname="index"><a href="http://bookshadow.com/book/">图书</a></li>
+            <li navname="donate"><a href="http://bookshadow.com/weblog/2017/06/24/bookshadow-contributor-list/">捐赠</a></li>
+            <!-- <li navname="grid"><a href="/book/grid/">格子</a></li> -->
+        </ul>
+        <form method="get" action="http://bookshadow.com/weblog/search/" class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="search-query form-control" placeholder="搜索" name="pattern" value="">
+        </div>
+        <button type="submit" name="submit" class="btn btn-default btn-default">
+          搜索<!-- <span class="glyphicon glyphicon-search"></span> -->
+        </button>
+      </form>
+        <!-- <a href="https://api.weibo.com/oauth2/authorize?client_id=120473611&redirect_uri=http://www.bookshadow.com/book/grid/" class="btn btn-default navbar-btn">Weibo Login</a> -->
+        <ul class="nav navbar-nav navbar-right">
+        
+        <li>
+        </li><li>
+          <a href="http://bookshadow.com/weblog/sitemap/" title="网站地图" class="sitemap">
+            网站地图
+          </a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li>
+          <a href="http://bookshadow.com/weblog/feeds/" title="RSS Feed of latest entries" class="feeds">
+            RSS Feed
+          </a>
+        </li>
+      </ul>
+    </div>
+    </div>
+</nav>
+
+	
+  <div class="zinnia entry entry-715 year-2017 month-09 week-39 day-30" style="margin-top:15px;">
+    
+    <div class="container">
+      <div class="row">
+        <div id="content" class="hfeed col-xs-12 col-sm-8 col-md-8 col-lg-8">
+          
+  <ul class="breadcrumb">
+  
+  <li>
+    
+    <a href="http://bookshadow.com/weblog/" title="博客">博客</a>
+    
+  </li>
+  
+  <li>
+    
+    <a href="http://bookshadow.com/weblog/2017/" title="2017">2017</a>
+    
+  </li>
+  
+  <li>
+    
+    <a href="http://bookshadow.com/weblog/2017/09/" title="九月">九月</a>
+    
+  </li>
+  
+  <li>
+    
+    <a href="http://bookshadow.com/weblog/2017/09/30/" title="30">30</a>
+    
+  </li>
+  
+  <li class="active">
+    
+    [LeetCode]Employee Importance
+    
+  </li>
+  
+</ul>
+
+
+
+          
+
+
+  
+<article id="entry-715" class="hentry">
+  
+  <header class="entry-header page-header">
+    <h2 class="entry-title">
+    
+      <a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/" title="[LeetCode]Employee Importance" rel="bookmark">
+        [LeetCode]Employee&nbsp;Importance
+      </a>
+    
+    
+      <br>
+      <small class="entry-info">
+        
+        
+        
+        作者是
+        
+        <span class="vcard author">
+          <a href="http://bookshadow.com/weblog/authors/%E5%9C%A8%E7%BA%BF%E7%96%AF%E7%8B%82/" class="fn url nickname" rel="author" title="显示所有在线疯狂&#39; 的评论">在线疯狂</a></span>
+        
+        发布于
+        
+        
+        
+        
+        <time class="published" datetime="2017-09-30T21:03:00" pubdate="pubdate">2017年9月30日</time>
+        
+        
+        
+        
+        在
+        
+        <a href="http://bookshadow.com/weblog/categories/leetcode/" title="显示所有LeetCode日志" rel="tag category">LeetCode</a>.
+        
+        
+      </small>
+    
+    </h2>
+    
+    <p class="entry-last-update" style="display: none;">
+      最后更新于 <time class="updated" datetime="2017-09-30T21:14:06">2017年9月30日</time>.
+    </p>
+    
+  </header>
+  
+
+  
+  <div class="entry-body">
+    
+    
+    
+    
+    <div class="entry-content lead">
+      <h2>题目描述：</h2>
+
+<p><a href="https://leetcode.com/problems/employee-importance/" target="_blank"><strong>LeetCode 690. Employee Importance</strong></a></p>
+
+<p>You are given a data structure of employee information, which includes the employee's <b>unique id</b>, his <b>importance value</b> and his <b>direct</b> subordinates' id.</p>
+
+<p>For example, employee 1 is the leader of employee 2, and employee 2 is the leader of employee 3. They have importance value 15, 10 and 5, respectively. Then employee 1 has a data structure like [1, 15, [2]], and employee 2 has [2, 10, [3]], and employee 3 has [3, 5, []]. Note that although employee 3 is also a subordinate of employee 1, the relationship is <b>not direct</b>.</p>
+
+<p>Now given the employee information of a company, and an employee id, you need to return the total importance value of this employee and all his subordinates.</p>
+
+<p><b>Example 1:</b></p>
+
+<pre><b>Input:</b> [[1, 5, [2, 3]], [2, 3, []], [3, 3, []]], 1
+<b>Output:</b> 11
+<b>Explanation:</b>
+Employee 1 has importance value 5, and he has two direct subordinates: employee 2 and employee 3. They both have importance value 3. So the total importance value of employee 1 is 5 + 3 + 3 = 11.
+</pre>
+
+<p><b>Note:</b></p>
+
+<ol>
+	<li>One employee has at most one <b>direct</b> leader and may have several subordinates.</li>
+	<li>The maximum number of employees won't exceed 2000.</li>
+</ol>
+
+<h2>题目大意：</h2>
+
+<p>给定一组雇员信息，包含ID，影响力，直接下属的ID列表。</p>
+
+<p>求某雇员及其所有下属的影响力之和。</p>
+
+<h2>解题思路：</h2>
+
+<p>递归（Recurion）</p>
+
+<h2>Python代码：</h2>
+
+<pre><code class="language-python has-numbering hljs "><span class="hljs-string">"""
+# Employee info
+class Employee(object):
+    def __init__(self, id, importance, subordinates):
+        # It's the unique id of each node.
+        # unique id of this employee
+        self.id = id
+        # the importance value of this employee
+        self.importance = importance
+        # the id of direct subordinates
+        self.subordinates = subordinates
+"""</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getImportance</span><span class="hljs-params">(self, employees, id)</span>:</span>
+        <span class="hljs-string">"""
+        :type employees: Employee
+        :type id: int
+        :rtype: int
+        """</span>
+        dmap = {emp.id : emp <span class="hljs-keyword">for</span> emp <span class="hljs-keyword">in</span> employees}
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">solve</span><span class="hljs-params">(id)</span>:</span>
+            emp = dmap[id]
+            <span class="hljs-keyword">return</span> emp.importance+ sum(solve(id) <span class="hljs-keyword">for</span> id <span class="hljs-keyword">in</span> emp.subordinates)
+        <span class="hljs-keyword">return</span> solve(id)
+</code><ul class="pre-numbering"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li></ul></pre>
+
+<p>&nbsp;</p>
+
+      
+      <p> 本文链接：<a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/" title="[LeetCode]Employee Importance">http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/</a><br>请尊重作者的劳动成果，转载请注明出处！书影博客保留对文章的所有权利。</p>
+      <form class="form-inline" action="https://shenghuo.alipay.com/send/payment/fill.htm" method="POST" target="_blank" accept-charset="GBK" rel="nofollow"><input name="optEmail" type="hidden" value="qinjiannet@sina.com"><input name="payAmount" type="hidden" value="10"><input id="title" name="title" type="hidden" value="书影博客捐赠"><input name="memo" type="hidden" value="捐赠书影博客，来自博文《[LeetCode]Employee Importance》">如果您喜欢这篇博文，欢迎您捐赠书影博客：
+      <input name="pay" type="image" value="" src="./[LeetCode]Employee Importance _ 书影博客_files/btn-index.png" style="wdith:75px;height:25px;vertical-align:bottom;" title="捐赠书影博客">，查看<a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" data-toggle="modal" data-target=".bs-alipay-modal-sm">支付宝二维码</a>
+      </form>
+      <div class="modal fade bs-alipay-modal-sm" tabindex="-1" role="dialog" aria-labelledby="alipaySmallModalLabel">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+		    <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title">捐赠书影博客</h4>
+            </div>
+		    <div class="modal-body" style="padding:0">
+			  <div class="thumbnail">
+                <img src="./[LeetCode]Employee Importance _ 书影博客_files/alipay.png" class="img-rounded" style="height:90%;width:90%;" data-bd-imgshare-binded="1">
+			  </div>
+			</div>
+            <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    
+    
+    
+  </div>
+  
+
+  
+  <footer class="entry-footer well clearfix">
+  
+    <div class="col-md-9 col-sm-9 col-xs-12">
+  
+    
+    <p class="entry-tags">
+      <span class="glyphicon glyphicon-tags"></span> <strong>标签</strong> :
+      
+      <a href="http://bookshadow.com/weblog/tags/leetcode/" title="显示所有标签为leetcode的日志" rel="tag">leetcode</a>
+      
+    </p>
+    
+    
+    <p class="entry-shorturl">
+      <span class="glyphicon glyphicon-bookmark"></span> <strong>缩略URL</strong> :
+      <a href="http://bookshadow.com/weblog/715/" title="到[LeetCode]Employee Importance的短链接" rel="shortlink">
+        http://bookshadow.com/weblog/715/
+      </a>
+    </p>
+    
+    
+    <p class="entry-discussions" style="padding-bottom:5px;">
+      <span class="glyphicon glyphicon-comment"></span> <strong>讨论</strong> :
+      
+      
+      
+      
+      暂无评论
+      <a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#comment-form" title="在文章[LeetCode]Employee Importance中发表一条评论">
+        首先发表评论！
+      </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </p>
+    
+  
+  </div>
+  <div class="col-md-3 col-sm-3 col-xs-12" style="padding:0;">
+    <p style="margin:0 0 0 10px;"><img src="./[LeetCode]Employee Importance _ 书影博客_files/wechatpay.jpg" title="微信捐赠书影博客" data-bd-imgshare-binded="1"></p>
+  </div>
+  
+  </footer>
+  
+</article>
+
+
+
+
+<aside class="entry-widgets" role="complementary">
+  
+  
+  
+  
+  
+  
+  <div class="entry-similar panel panel-default">
+    <div class="panel-heading">
+      类似日志
+    </div>
+    
+<ul class="list-group">
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2017/08/21/leetcode-image-smoother/" title="[LeetCode]Image Smoother" rel="bookmark">[LeetCode]Image Smoother</a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2017/10/15/leetcode-degree-of-an-array/" title="[LeetCode]Degree of an Array" rel="bookmark">[LeetCode]Degree of an Array</a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2017/10/08/leetcode-number-of-distinct-islands/" title="[LeetCode]Number of Distinct Islands" rel="bookmark">[LeetCode]Number of Distinct Islands</a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2017/07/09/leetcode-average-of-levels-in-binary-tree/" title="[LeetCode]Average of Levels in Binary Tree" rel="bookmark">[LeetCode]Average of Levels in Binary Tree</a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2017/07/30/leetcode-dota2-senate/" title="[LeetCode]Dota2 Senate" rel="bookmark">[LeetCode]Dota2 Senate</a>
+  </li>
+  
+</ul>
+
+  </div>
+  
+  
+  <div class="entry-prev-next">
+    <ul class="pager">
+      
+      
+      <li class="next">
+        <a href="http://bookshadow.com/weblog/2017/10/01/leetcode-repeated-string-match/" title="[LeetCode]Repeated String Match" rel="next">
+          [LeetCode]Repeated String Match →
+        </a>
+      </li>
+      
+      
+      
+      
+      <li class="previous">
+        <a href="http://bookshadow.com/weblog/2017/09/26/leetcode-redundant-connection-ii/" title="[LeetCode]Redundant Connection II" rel="prev">
+          ← [LeetCode]Redundant Connection II
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+  
+</aside>
+
+
+
+
+
+
+<p>Pingbacks已关闭。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>暂无评论</p>
+
+
+
+
+
+
+  
+
+<form action="http://bookshadow.com/comments/post/" method="post" id="comment-form" class="well form-horizontal">
+  <div><input type="hidden" name="csrfmiddlewaretoken" value="Wi6Hw2GRqTz4pQEgDTfVl9QrNx1AQIR8"></div>
+  
+  <fieldset>
+    <legend>张贴您的评论</legend>
+    <input type="hidden" name="next" value="/weblog/comments/success/">
+    
+    <input id="id_content_type" name="content_type" type="hidden" value="zinnia.entry">
+    
+    <input id="id_object_pk" name="object_pk" type="hidden" value="715">
+    
+    <input id="id_timestamp" name="timestamp" type="hidden" value="1510612370">
+    
+    <input id="id_security_hash" maxlength="40" name="security_hash" type="hidden" value="3ee301a2fb603b19d87e6ce8a11a4590456e5f71">
+    
+    
+    
+    <div>
+      
+      <div class="form-group">
+        <label for="id_name" class="col-lg-2 control-label">Name</label>
+        <div class="col-lg-10">
+          
+            <input type="text" id="id_name" class="form-control" name="name">
+          
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    <div>
+      
+      <div class="form-group">
+        <label for="id_email" class="col-lg-2 control-label">Email 地址</label>
+        <div class="col-lg-10">
+          
+            <input type="text" id="id_email" class="form-control" name="email">
+          
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    <div>
+      
+      <div class="form-group">
+        <label for="id_url" class="col-lg-2 control-label">URL</label>
+        <div class="col-lg-10">
+          
+            <input type="text" id="id_url" class="form-control" name="url">
+          
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    <div>
+      
+      <div class="form-group">
+        <label for="id_comment" class="col-lg-2 control-label">评论</label>
+        <div class="col-lg-10">
+          
+            <textarea id="id_comment" class="form-control" rows="10" name="comment"></textarea>
+          
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    <div style="display:none;">
+      
+      <div class="form-group">
+        <label for="id_honeypot" class="col-lg-2 control-label">如果你在该字段中输入任何内容，那么你的评论就会被视为垃圾评论。</label>
+        <div class="col-lg-10">
+          
+            <input type="text" id="id_honeypot" class="form-control" name="honeypot">
+          
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    <p class="submit">
+      <input type="submit" name="submit" class="submit-post btn btn-primary submit-preview" value="张贴">
+      <input type="submit" name="preview" class="submit-preview btn btn-default submit-post" value="预览">
+    </p>
+  </fieldset>
+</form>
+
+
+
+
+
+        </div>
+        <div id="sidebar" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          
+
+<aside id="widget-welcome" class="widget panel panel-default">
+  <div class="panel-heading">
+    欢迎！
+  </div>
+  <div class="panel-body">
+    <p>
+    欢迎来到<a target="_blank" href="http://weibo.com/qinjiannet/" title="在线疯狂的微博"><strong>在线疯狂</strong></a>的博客
+    </p>
+    <p>
+    点此查看 <strong><a href="http://bookshadow.com/leetcode/" style="color:red;">LeetCode题解列表</a></strong> <strong><a href="http://bookshadow.com/weblog/2017/06/24/bookshadow-contributor-list/">捐赠名单</a></strong>
+    </p>
+    <p>
+    <strong><a href="http://bookshadow.com/">书影博客</a></strong> 基于 <a target="_blank" href="http://www.djangoproject.com/">Django 1.8</a> 与 <a target="_blank" href="https://github.com/Fantomas42/django-blog-zinnia/">Zinnia 0.15.2</a> 构建
+    </p>
+<!--     <p>
+    由 <strong><a target="_blank" href="http://sae.sina.com.cn">Sina Application Engine</a></strong> 提供云计算资源
+    </p>
+    <p>
+    查看 <strong><a href="/weblog/2014/02/06/zinnia-blog-milestone/" title="书影博客搭建历程">书影博客搭建历程</a></strong>
+    </p> -->
+    <div class="bdsharebuttonbox bdshare-button-style0-24" data-bd-bind="1510625462580"><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" class="bds_more" data-cmd="more"></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" class="bds_bdhome" data-cmd="bdhome" title="分享到百度新首页"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{"tsina":"120473611"},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"image":{"viewList":["tsina","renren","douban","weixin","qzone","tqq","bdhome"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","renren","douban","weixin","qzone","tqq","bdhome"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+  </div>
+</aside>
+<aside id="widget-tags" class="widget panel panel-default">
+  <div class="panel-heading">
+    <a href="http://bookshadow.com/weblog/tags/">标签</a>
+  </div>
+  
+<ul class="tag-cloud list-group tags">
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/2014/" title="2 日志的标签是2014" class="tag-1">2014</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/360%E7%BD%91%E7%AB%99%E5%8D%AB%E5%A3%AB/" title="1 日志的标签是360网站卫士" class="tag-1">360网站卫士</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/alexa/" title="1 日志的标签是alexa" class="tag-1">alexa</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/amCharts/" title="3 日志的标签是amCharts" class="tag-2">amCharts</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/blog/" title="2 日志的标签是blog" class="tag-1">blog</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/bootstrap/" title="5 日志的标签是bootstrap" class="tag-2">bootstrap</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/cdn/" title="2 日志的标签是cdn" class="tag-1">cdn</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/channel/" title="2 日志的标签是channel" class="tag-1">channel</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/CKEditor/" title="3 日志的标签是CKEditor" class="tag-2">CKEditor</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/cname/" title="1 日志的标签是cname" class="tag-1">cname</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/codeeval/" title="1 日志的标签是codeeval" class="tag-1">codeeval</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/codemirror/" title="2 日志的标签是codemirror" class="tag-1">codemirror</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/content-based/" title="1 日志的标签是content-based" class="tag-1">content-based</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/d3js/" title="2 日志的标签是d3js" class="tag-1">d3js</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/dbhandler/" title="1 日志的标签是dbhandler" class="tag-1">dbhandler</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/debug/" title="1 日志的标签是debug" class="tag-1">debug</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/dfs/" title="1 日志的标签是dfs" class="tag-1">dfs</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/discuz/" title="1 日志的标签是discuz" class="tag-1">discuz</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/django/" title="17 日志的标签是django" class="tag-3">django</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/duoshuo/" title="2 日志的标签是duoshuo" class="tag-1">duoshuo</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/eclipse/" title="1 日志的标签是eclipse" class="tag-1">eclipse</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/fail2ban/" title="1 日志的标签是fail2ban" class="tag-1">fail2ban</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/fibonacci/" title="1 日志的标签是fibonacci" class="tag-1">fibonacci</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/Google/" title="1 日志的标签是Google" class="tag-1">Google</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/gperf/" title="1 日志的标签是gperf" class="tag-1">gperf</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/heroku/" title="2 日志的标签是heroku" class="tag-1">heroku</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/highlightjs/" title="2 日志的标签是highlightjs" class="tag-1">highlightjs</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/http404/" title="1 日志的标签是http404" class="tag-1">http404</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/http500/" title="1 日志的标签是http500" class="tag-1">http500</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/Http502/" title="1 日志的标签是Http502" class="tag-1">Http502</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/Java/" title="11 日志的标签是Java" class="tag-3">Java</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/jieba%E5%88%86%E8%AF%8D/" title="1 日志的标签是jieba分词" class="tag-1">jieba分词</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/jquery/" title="12 日志的标签是jquery" class="tag-3">jquery</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/kvdb/" title="2 日志的标签是kvdb" class="tag-1">kvdb</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/leetcode/" title="544 日志的标签是leetcode" class="tag-6">leetcode</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/lucene/" title="1 日志的标签是lucene" class="tag-1">lucene</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/marker/" title="1 日志的标签是marker" class="tag-1">marker</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/matplotlib/" title="2 日志的标签是matplotlib" class="tag-1">matplotlib</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/memcache/" title="2 日志的标签是memcache" class="tag-1">memcache</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/MySQL/" title="1 日志的标签是MySQL" class="tag-1">MySQL</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/node.js/" title="1 日志的标签是node.js" class="tag-1">node.js</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/nosql/" title="1 日志的标签是nosql" class="tag-1">nosql</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/openshift/" title="4 日志的标签是openshift" class="tag-2">openshift</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/Oracle/" title="1 日志的标签是Oracle" class="tag-1">Oracle</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/pagerank/" title="2 日志的标签是pagerank" class="tag-1">pagerank</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/PHP/" title="3 日志的标签是PHP" class="tag-2">PHP</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/poj/" title="3 日志的标签是poj" class="tag-2">poj</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/py2exe/" title="1 日志的标签是py2exe" class="tag-1">py2exe</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/pyquery/" title="1 日志的标签是pyquery" class="tag-1">pyquery</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/python/" title="17 日志的标签是python" class="tag-3">python</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/QQ%E4%B8%AD%E5%9B%BD%E8%B1%A1%E6%A3%8B/" title="1 日志的标签是QQ中国象棋" class="tag-1">QQ中国象棋</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/recommender-system/" title="4 日志的标签是recommender-system" class="tag-2">recommender-system</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/sae/" title="20 日志的标签是sae" class="tag-3">sae</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/seo/" title="5 日志的标签是seo" class="tag-2">seo</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/sitemap/" title="1 日志的标签是sitemap" class="tag-1">sitemap</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/sklearn/" title="1 日志的标签是sklearn" class="tag-1">sklearn</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/solr/" title="1 日志的标签是solr" class="tag-1">solr</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/springside/" title="1 日志的标签是springside" class="tag-1">springside</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/syncdb/" title="1 日志的标签是syncdb" class="tag-1">syncdb</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/tinymce/" title="3 日志的标签是tinymce" class="tag-2">tinymce</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/toolbar/" title="1 日志的标签是toolbar" class="tag-1">toolbar</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/toolbelt/" title="1 日志的标签是toolbelt" class="tag-1">toolbelt</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/topcoder/" title="7 日志的标签是topcoder" class="tag-2">topcoder</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/virtualenv/" title="1 日志的标签是virtualenv" class="tag-1">virtualenv</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/visualization/" title="2 日志的标签是visualization" class="tag-1">visualization</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/wordpress/" title="2 日志的标签是wordpress" class="tag-1">wordpress</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/wysiwyg/" title="1 日志的标签是wysiwyg" class="tag-1">wysiwyg</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/zinnia/" title="10 日志的标签是zinnia" class="tag-3">zinnia</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/ztree/" title="1 日志的标签是ztree" class="tag-1">ztree</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E4%B8%83%E7%89%9B%E4%BA%91%E5%AD%98%E5%82%A8/" title="1 日志的标签是七牛云存储" class="tag-1">七牛云存储</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" title="1 日志的标签是个人网站" class="tag-1">个人网站</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E4%B8%B4%E6%97%B6%E7%9B%AE%E5%BD%95/" title="1 日志的标签是临时目录" class="tag-1">临时目录</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E4%B8%BB%E9%A2%98%E6%A8%A1%E6%9D%BF/" title="1 日志的标签是主题模板" class="tag-1">主题模板</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/" title="3 日志的标签是云计算" class="tag-2">云计算</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" title="1 日志的标签是代码高亮" class="tag-1">代码高亮</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" title="2 日志的标签是优先队列" class="tag-1">优先队列</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E5%88%9D%E5%AD%A6/" title="1 日志的标签是初学" class="tag-1">初学</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E5%8A%A0%E9%80%9F%E4%B9%90/" title="1 日志的标签是加速乐" class="tag-1">加速乐</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E5%8D%9A%E5%AE%A2/" title="2 日志的标签是博客" class="tag-1">博客</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E5%93%88%E5%BC%97%E6%9B%BC%E6%A0%91/" title="1 日志的标签是哈弗曼树" class="tag-1">哈弗曼树</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/" title="1 日志的标签是外语学习" class="tag-1">外语学习</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E5%AD%97%E5%85%B8%E6%A0%91/" title="2 日志的标签是字典树" class="tag-1">字典树</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E5%AD%98%E5%82%A8%E4%BB%8B%E8%B4%A8/" title="1 日志的标签是存储介质" class="tag-1">存储介质</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="1 日志的标签是并查集" class="tag-1">并查集</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E5%BC%80%E5%8F%91%E8%80%85%E8%AE%A4%E8%AF%81/" title="1 日志的标签是开发者认证" class="tag-1">开发者认证</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E6%8B%AC%E5%8F%B7%E8%A1%A5%E5%85%A8/" title="1 日志的标签是括号补全" class="tag-1">括号补全</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" title="3 日志的标签是推荐系统" class="tag-2">推荐系统</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E6%8F%92%E4%BB%B6/" title="1 日志的标签是插件" class="tag-1">插件</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E6%9D%83%E5%88%A9/" title="1 日志的标签是权利" class="tag-1">权利</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E6%A6%82%E7%8E%87/" title="2 日志的标签是概率" class="tag-1">概率</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E6%A8%A1%E6%80%81%E6%A1%86/" title="1 日志的标签是模态框" class="tag-1">模态框</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" title="1 日志的标签是流量分析" class="tag-1">流量分析</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E7%89%A9%E5%8C%96%E8%A7%86%E5%9B%BE/" title="1 日志的标签是物化视图" class="tag-1">物化视图</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E7%99%BE%E5%BA%A6%E5%8A%A0%E9%80%9F%E4%B9%90/" title="2 日志的标签是百度加速乐" class="tag-1">百度加速乐</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" title="1 日志的标签是程序员" class="tag-1">程序员</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E7%AB%99%E7%82%B9%E5%9C%B0%E5%9B%BE/" title="1 日志的标签是站点地图" class="tag-1">站点地图</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="1 日志的标签是线段树" class="tag-1">线段树</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" title="5 日志的标签是编程语言" class="tag-2">编程语言</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A1%A8%E6%83%85/" title="1 日志的标签是自定义表情" class="tag-1">自定义表情</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80/" title="2 日志的标签是自然语言" class="tag-1">自然语言</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/" title="2 日志的标签是表达式求值" class="tag-1">表达式求值</a>
+  </li>
+  
+  <li>
+    <a href="http://bookshadow.com/weblog/tags/%E8%B0%83%E8%AF%95/" title="1 日志的标签是调试" class="tag-1">调试</a>
+  </li>
+  
+</ul>
+
+</aside>
+<script type="text/javascript" src="./[LeetCode]Employee Importance _ 书影博客_files/m.js"></script>
+<!-- <aside id="widget-baidu" class="widget panel panel-default" style="text-align:center;overflow:hidden;border:0px;">
+<script type="text/javascript">
+    var cpro_id = "u2388051";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+
+</aside> -->
+<aside id="widget-categories" class="widget panel panel-default">
+  <div class="panel-heading">
+    类别
+  </div>
+  
+<ul class="category-root list-group">
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/ckeditor/" title="显示所有CKEditor日志">CKEditor
+      <span class="label label-info">
+        3 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/django/" title="显示所有django日志">django
+      <span class="label label-info">
+        14 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/django/django-blog-zinnia/" title="显示所有django-blog-zinnia日志">django-blog-zinnia
+      <span class="label label-info">
+        11 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/java/" title="显示所有Java日志">Java
+      <span class="label label-info">
+        16 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/javascript/" title="显示所有JavaScript日志">JavaScript
+      <span class="label label-info">
+        27 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/leetcode/" title="显示所有LeetCode日志">LeetCode
+      <span class="label label-info">
+        543 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/openshift/" title="显示所有OpenShift日志">OpenShift
+      <span class="label label-info">
+        6 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/python/" title="显示所有Python日志">Python
+      <span class="label label-info">
+        31 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/sae/" title="显示所有SAE日志">SAE
+      <span class="label label-info">
+        28 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/tinymce/" title="显示所有tinymce日志">tinymce
+      <span class="label label-info">
+        2 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/topcoder-srm/" title="显示所有topcoder-srm日志">topcoder-srm
+      <span class="label label-info">
+        9 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/repost/" title="显示所有他山之石日志">他山之石
+      <span class="label label-info">
+        17 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/math/" title="显示所有数学日志">数学
+      <span class="label label-info">
+        3 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/data-structure/" title="显示所有数据结构日志">数据结构
+      <span class="label label-info">
+        11 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/nag/" title="显示所有碎碎念日志">碎碎念
+      <span class="label label-info">
+        12 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/algorithm/" title="显示所有算法日志">算法
+      <span class="label label-info">
+        8 日志
+      </span>
+    </a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/categories/translate/" title="显示所有译林日志">译林
+      <span class="label label-info">
+        47 日志
+      </span>
+    </a>
+  </li>
+  
+</ul>
+
+</aside>
+<aside id="widget-weibo-show" class="widget panel panel-default">
+<iframe width="100%" height="550" class="share_self" frameborder="0" scrolling="no" src="./[LeetCode]Employee Importance _ 书影博客_files/index.html"></iframe>
+</aside>
+
+<!-- <aside id="widget-recents" class="widget panel panel-default">
+  <div class="panel-heading" title="向书影博客捐赠X元">
+    捐赠书影博客
+  </div>
+  <div title="您的捐赠将用于书影博客的运营">
+  <img src="/static/image/alipay.png" class="img-rounded" alt="捐赠共勉"></img>
+  </div>
+</aside> -->
+
+<aside id="widget-calendar" class="widget panel panel-default">
+  <div class="panel-heading">
+    日历
+  </div>
+  <table class="entries-calendar table table-bordered">
+<caption style="padding:8px;border-bottom:#ccc solid 1px;">九月 2017</caption>
+<thead><tr><th class="mon">周一</th><th class="tue">周二</th><th class="wed">周三</th><th class="thu">周四</th><th class="fri">周五</th><th class="sat">周六</th><th class="sun">周日</th></tr></thead>
+<tfoot><tr><td colspan="3" class="prev"><a href="http://bookshadow.com/weblog/2017/08/" class="previous-month">2017年8月</a></td><td class="pad">&nbsp;</td><td colspan="3" class="next"><a href="http://bookshadow.com/weblog/2017/10/" class="next-month">2017年10月</a></td></tr></tfoot>
+<tbody>
+<tr><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="fri">1</td><td class="sat">2</td><td class="sun entry"><a href="http://bookshadow.com/weblog/2017/09/03/" class="archives">3</a></td></tr>
+<tr><td class="mon">4</td><td class="tue">5</td><td class="wed">6</td><td class="thu">7</td><td class="fri">8</td><td class="sat">9</td><td class="sun entry"><a href="http://bookshadow.com/weblog/2017/09/10/" class="archives">10</a></td></tr>
+<tr><td class="mon">11</td><td class="tue">12</td><td class="wed">13</td><td class="thu">14</td><td class="fri">15</td><td class="sat">16</td><td class="sun entry"><a href="http://bookshadow.com/weblog/2017/09/17/" class="archives">17</a></td></tr>
+<tr><td class="mon">18</td><td class="tue">19</td><td class="wed">20</td><td class="thu">21</td><td class="fri">22</td><td class="sat">23</td><td class="sun entry"><a href="http://bookshadow.com/weblog/2017/09/24/" class="archives">24</a></td></tr>
+<tr><td class="mon">25</td><td class="tue entry"><a href="http://bookshadow.com/weblog/2017/09/26/" class="archives">26</a></td><td class="wed">27</td><td class="thu">28</td><td class="fri">29</td><td class="sat entry"><a href="http://bookshadow.com/weblog/2017/09/30/" class="archives">30</a></td><td class="noday">&nbsp;</td></tr>
+</tbody>
+</table>
+
+
+</aside>
+
+<aside id="widget-recents" class="widget panel panel-default">
+  <div class="panel-heading">
+    最近日志
+  </div>
+  
+<ul class="list-group">
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2017/11/13/leetcode-weekly-contest-58/" title="LeetCode Weekly Contest 58解题报告" rel="bookmark">LeetCode Weekly Contest 58解题报告</a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2017/11/13/leetcode-minimum-window-subsequence/" title="[LeetCode]Minimum Window Subsequence" rel="bookmark">[LeetCode]Minimum Window Subsequence</a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2017/11/13/leetcode-number-of-atoms/" title="[LeetCode]Number of Atoms" rel="bookmark">[LeetCode]Number of Atoms</a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2017/11/13/leetcode-split-linked-list-in-parts/" title="[LeetCode]Split Linked List in Parts" rel="bookmark">[LeetCode]Split Linked List in Parts</a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2017/11/13/leetcode-find-pivot-index/" title="[LeetCode]Find Pivot Index" rel="bookmark">[LeetCode]Find Pivot Index</a>
+  </li>
+  
+</ul>
+
+</aside>
+
+<aside id="widget-randoms" class="widget panel panel-default">
+  <div class="panel-heading">
+    随机日志
+  </div>
+  
+<ul class="list-group">
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2016/06/07/leetcode-russian-doll-envelopes/" title="[LeetCode]Russian Doll Envelopes" rel="bookmark">[LeetCode]Russian Doll Envelopes</a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2016/06/26/leetcode-valid-perfect-square/" title="[LeetCode]Valid Perfect Square" rel="bookmark">[LeetCode]Valid Perfect Square</a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2014/02/10/django-debug-toolbar/" title="Django调试利器—Django Debug Toolbar简介" rel="bookmark">Django调试利器—Django Debug Toolbar简介</a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2017/10/01/leetcode-maximum-sum-of-3-non-overlapping-subarrays/" title="[LeetCode]Maximum Sum of 3 Non-Overlapping Subarrays" rel="bookmark">[LeetCode]Maximum Sum of 3 Non-Overlapping Subarrays</a>
+  </li>
+  
+  <li class="list-group-item">
+    <a href="http://bookshadow.com/weblog/2017/10/01/leetcode-weekly-contest-52/" title="LeetCode Weekly Contest 52解题报告" rel="bookmark">LeetCode Weekly Contest 52解题报告</a>
+  </li>
+  
+</ul>
+
+</aside>
+
+<!-- <aside id="widget-visitors" class="widget panel panel-default">
+  <div class="panel-heading">
+    最近访客
+  </div>
+  <ul class="list-group" style="min-height:36px;">
+  <div class="ds-recent-visitors" data-num-items="12" data-avatar-size="48" style="margin:10px 10px 0 10px;"></div>
+  </ul>
+</aside> -->
+<aside id="widget-archives" class="widget panel panel-default">
+  <div class="panel-heading">
+    归档
+  </div>
+  
+
+<div class="tree">
+<ul>
+  
+  <li ltype="year" class="parent_li">
+    <span title="折叠此级"><i class="glyphicon glyphicon-minus-sign"></i> 年度归档</span>
+    <a title="归档 2017" rel="archives" href="http://bookshadow.com/weblog/2017/">2017</a>
+    
+    <ul>
+      
+      <li ltype="month" class="parent_li">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2017年1月" rel="archives" href="http://bookshadow.com/weblog/2017/01/">
+          一月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年1月1日" rel="archives" href="http://bookshadow.com/weblog/2017/01/01/">
+              01月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年1月5日" rel="archives" href="http://bookshadow.com/weblog/2017/01/05/">
+              01月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年1月8日" rel="archives" href="http://bookshadow.com/weblog/2017/01/08/">
+              01月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年1月15日" rel="archives" href="http://bookshadow.com/weblog/2017/01/15/">
+              01月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年1月22日" rel="archives" href="http://bookshadow.com/weblog/2017/01/22/">
+              01月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年1月29日" rel="archives" href="http://bookshadow.com/weblog/2017/01/29/">
+              01月29日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2017年2月" rel="archives" href="http://bookshadow.com/weblog/2017/02/">
+          二月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年2月5日" rel="archives" href="http://bookshadow.com/weblog/2017/02/05/">
+              02月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年2月12日" rel="archives" href="http://bookshadow.com/weblog/2017/02/12/">
+              02月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年2月19日" rel="archives" href="http://bookshadow.com/weblog/2017/02/19/">
+              02月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年2月26日" rel="archives" href="http://bookshadow.com/weblog/2017/02/26/">
+              02月26日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2017年3月" rel="archives" href="http://bookshadow.com/weblog/2017/03/">
+          三月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年3月5日" rel="archives" href="http://bookshadow.com/weblog/2017/03/05/">
+              03月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年3月11日" rel="archives" href="http://bookshadow.com/weblog/2017/03/11/">
+              03月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年3月12日" rel="archives" href="http://bookshadow.com/weblog/2017/03/12/">
+              03月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年3月19日" rel="archives" href="http://bookshadow.com/weblog/2017/03/19/">
+              03月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年3月26日" rel="archives" href="http://bookshadow.com/weblog/2017/03/26/">
+              03月26日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2017年4月" rel="archives" href="http://bookshadow.com/weblog/2017/04/">
+          四月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年4月3日" rel="archives" href="http://bookshadow.com/weblog/2017/04/03/">
+              04月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年4月9日" rel="archives" href="http://bookshadow.com/weblog/2017/04/09/">
+              04月9日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年4月13日" rel="archives" href="http://bookshadow.com/weblog/2017/04/13/">
+              04月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年4月16日" rel="archives" href="http://bookshadow.com/weblog/2017/04/16/">
+              04月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年4月23日" rel="archives" href="http://bookshadow.com/weblog/2017/04/23/">
+              04月23日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年4月30日" rel="archives" href="http://bookshadow.com/weblog/2017/04/30/">
+              04月30日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2017年5月" rel="archives" href="http://bookshadow.com/weblog/2017/05/">
+          五月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年5月1日" rel="archives" href="http://bookshadow.com/weblog/2017/05/01/">
+              05月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年5月5日" rel="archives" href="http://bookshadow.com/weblog/2017/05/05/">
+              05月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年5月7日" rel="archives" href="http://bookshadow.com/weblog/2017/05/07/">
+              05月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年5月9日" rel="archives" href="http://bookshadow.com/weblog/2017/05/09/">
+              05月9日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年5月15日" rel="archives" href="http://bookshadow.com/weblog/2017/05/15/">
+              05月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年5月21日" rel="archives" href="http://bookshadow.com/weblog/2017/05/21/">
+              05月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年5月28日" rel="archives" href="http://bookshadow.com/weblog/2017/05/28/">
+              05月28日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2017年6月" rel="archives" href="http://bookshadow.com/weblog/2017/06/">
+          六月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年6月4日" rel="archives" href="http://bookshadow.com/weblog/2017/06/04/">
+              06月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年6月11日" rel="archives" href="http://bookshadow.com/weblog/2017/06/11/">
+              06月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年6月18日" rel="archives" href="http://bookshadow.com/weblog/2017/06/18/">
+              06月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年6月24日" rel="archives" href="http://bookshadow.com/weblog/2017/06/24/">
+              06月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年6月25日" rel="archives" href="http://bookshadow.com/weblog/2017/06/25/">
+              06月25日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2017年7月" rel="archives" href="http://bookshadow.com/weblog/2017/07/">
+          七月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年7月2日" rel="archives" href="http://bookshadow.com/weblog/2017/07/02/">
+              07月2日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年7月9日" rel="archives" href="http://bookshadow.com/weblog/2017/07/09/">
+              07月9日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年7月16日" rel="archives" href="http://bookshadow.com/weblog/2017/07/16/">
+              07月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年7月24日" rel="archives" href="http://bookshadow.com/weblog/2017/07/24/">
+              07月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年7月30日" rel="archives" href="http://bookshadow.com/weblog/2017/07/30/">
+              07月30日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2017年8月" rel="archives" href="http://bookshadow.com/weblog/2017/08/">
+          八月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年8月6日" rel="archives" href="http://bookshadow.com/weblog/2017/08/06/">
+              08月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年8月13日" rel="archives" href="http://bookshadow.com/weblog/2017/08/13/">
+              08月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年8月21日" rel="archives" href="http://bookshadow.com/weblog/2017/08/21/">
+              08月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年8月30日" rel="archives" href="http://bookshadow.com/weblog/2017/08/30/">
+              08月30日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2017年9月" rel="archives" href="http://bookshadow.com/weblog/2017/09/">
+          九月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年9月3日" rel="archives" href="http://bookshadow.com/weblog/2017/09/03/">
+              09月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年9月10日" rel="archives" href="http://bookshadow.com/weblog/2017/09/10/">
+              09月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年9月17日" rel="archives" href="http://bookshadow.com/weblog/2017/09/17/">
+              09月17日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年9月24日" rel="archives" href="http://bookshadow.com/weblog/2017/09/24/">
+              09月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年9月26日" rel="archives" href="http://bookshadow.com/weblog/2017/09/26/">
+              09月26日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年9月30日" rel="archives" href="http://bookshadow.com/weblog/2017/09/30/">
+              09月30日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2017年10月" rel="archives" href="http://bookshadow.com/weblog/2017/10/">
+          十月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年10月1日" rel="archives" href="http://bookshadow.com/weblog/2017/10/01/">
+              10月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年10月8日" rel="archives" href="http://bookshadow.com/weblog/2017/10/08/">
+              10月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年10月13日" rel="archives" href="http://bookshadow.com/weblog/2017/10/13/">
+              10月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年10月15日" rel="archives" href="http://bookshadow.com/weblog/2017/10/15/">
+              10月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年10月22日" rel="archives" href="http://bookshadow.com/weblog/2017/10/22/">
+              10月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年10月23日" rel="archives" href="http://bookshadow.com/weblog/2017/10/23/">
+              10月23日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年10月29日" rel="archives" href="http://bookshadow.com/weblog/2017/10/29/">
+              10月29日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2017年11月" rel="archives" href="http://bookshadow.com/weblog/2017/11/">
+          十一月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年11月5日" rel="archives" href="http://bookshadow.com/weblog/2017/11/05/">
+              11月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2017年11月13日" rel="archives" href="http://bookshadow.com/weblog/2017/11/13/">
+              11月13日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+    </ul>
+  </li>
+  
+  <li ltype="year" class="parent_li">
+    <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 年度归档</span>
+    <a title="归档 2016" rel="archives" href="http://bookshadow.com/weblog/2016/">2016</a>
+    
+    <ul>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2016年1月" rel="archives" href="http://bookshadow.com/weblog/2016/01/">
+          一月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年1月7日" rel="archives" href="http://bookshadow.com/weblog/2016/01/07/">
+              01月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年1月8日" rel="archives" href="http://bookshadow.com/weblog/2016/01/08/">
+              01月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年1月11日" rel="archives" href="http://bookshadow.com/weblog/2016/01/11/">
+              01月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年1月16日" rel="archives" href="http://bookshadow.com/weblog/2016/01/16/">
+              01月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年1月20日" rel="archives" href="http://bookshadow.com/weblog/2016/01/20/">
+              01月20日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年1月21日" rel="archives" href="http://bookshadow.com/weblog/2016/01/21/">
+              01月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年1月22日" rel="archives" href="http://bookshadow.com/weblog/2016/01/22/">
+              01月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年1月27日" rel="archives" href="http://bookshadow.com/weblog/2016/01/27/">
+              01月27日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2016年2月" rel="archives" href="http://bookshadow.com/weblog/2016/02/">
+          二月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年2月1日" rel="archives" href="http://bookshadow.com/weblog/2016/02/01/">
+              02月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年2月3日" rel="archives" href="http://bookshadow.com/weblog/2016/02/03/">
+              02月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年2月5日" rel="archives" href="http://bookshadow.com/weblog/2016/02/05/">
+              02月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年2月16日" rel="archives" href="http://bookshadow.com/weblog/2016/02/16/">
+              02月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年2月23日" rel="archives" href="http://bookshadow.com/weblog/2016/02/23/">
+              02月23日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年2月28日" rel="archives" href="http://bookshadow.com/weblog/2016/02/28/">
+              02月28日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2016年3月" rel="archives" href="http://bookshadow.com/weblog/2016/03/">
+          三月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年3月10日" rel="archives" href="http://bookshadow.com/weblog/2016/03/10/">
+              03月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年3月12日" rel="archives" href="http://bookshadow.com/weblog/2016/03/12/">
+              03月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年3月13日" rel="archives" href="http://bookshadow.com/weblog/2016/03/13/">
+              03月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年3月18日" rel="archives" href="http://bookshadow.com/weblog/2016/03/18/">
+              03月18日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2016年4月" rel="archives" href="http://bookshadow.com/weblog/2016/04/">
+          四月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年4月7日" rel="archives" href="http://bookshadow.com/weblog/2016/04/07/">
+              04月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年4月17日" rel="archives" href="http://bookshadow.com/weblog/2016/04/17/">
+              04月17日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年4月18日" rel="archives" href="http://bookshadow.com/weblog/2016/04/18/">
+              04月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年4月19日" rel="archives" href="http://bookshadow.com/weblog/2016/04/19/">
+              04月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年4月22日" rel="archives" href="http://bookshadow.com/weblog/2016/04/22/">
+              04月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年4月23日" rel="archives" href="http://bookshadow.com/weblog/2016/04/23/">
+              04月23日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2016年5月" rel="archives" href="http://bookshadow.com/weblog/2016/05/">
+          五月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年5月2日" rel="archives" href="http://bookshadow.com/weblog/2016/05/02/">
+              05月2日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年5月18日" rel="archives" href="http://bookshadow.com/weblog/2016/05/18/">
+              05月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年5月21日" rel="archives" href="http://bookshadow.com/weblog/2016/05/21/">
+              05月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年5月31日" rel="archives" href="http://bookshadow.com/weblog/2016/05/31/">
+              05月31日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2016年6月" rel="archives" href="http://bookshadow.com/weblog/2016/06/">
+          六月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年6月7日" rel="archives" href="http://bookshadow.com/weblog/2016/06/07/">
+              06月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年6月11日" rel="archives" href="http://bookshadow.com/weblog/2016/06/11/">
+              06月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年6月13日" rel="archives" href="http://bookshadow.com/weblog/2016/06/13/">
+              06月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年6月14日" rel="archives" href="http://bookshadow.com/weblog/2016/06/14/">
+              06月14日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年6月22日" rel="archives" href="http://bookshadow.com/weblog/2016/06/22/">
+              06月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年6月24日" rel="archives" href="http://bookshadow.com/weblog/2016/06/24/">
+              06月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年6月26日" rel="archives" href="http://bookshadow.com/weblog/2016/06/26/">
+              06月26日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年6月27日" rel="archives" href="http://bookshadow.com/weblog/2016/06/27/">
+              06月27日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年6月30日" rel="archives" href="http://bookshadow.com/weblog/2016/06/30/">
+              06月30日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2016年7月" rel="archives" href="http://bookshadow.com/weblog/2016/07/">
+          七月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年7月3日" rel="archives" href="http://bookshadow.com/weblog/2016/07/03/">
+              07月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年7月7日" rel="archives" href="http://bookshadow.com/weblog/2016/07/07/">
+              07月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年7月10日" rel="archives" href="http://bookshadow.com/weblog/2016/07/10/">
+              07月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年7月13日" rel="archives" href="http://bookshadow.com/weblog/2016/07/13/">
+              07月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年7月16日" rel="archives" href="http://bookshadow.com/weblog/2016/07/16/">
+              07月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年7月19日" rel="archives" href="http://bookshadow.com/weblog/2016/07/19/">
+              07月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年7月21日" rel="archives" href="http://bookshadow.com/weblog/2016/07/21/">
+              07月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年7月25日" rel="archives" href="http://bookshadow.com/weblog/2016/07/25/">
+              07月25日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2016年8月" rel="archives" href="http://bookshadow.com/weblog/2016/08/">
+          八月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年8月1日" rel="archives" href="http://bookshadow.com/weblog/2016/08/01/">
+              08月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年8月4日" rel="archives" href="http://bookshadow.com/weblog/2016/08/04/">
+              08月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年8月9日" rel="archives" href="http://bookshadow.com/weblog/2016/08/09/">
+              08月9日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年8月10日" rel="archives" href="http://bookshadow.com/weblog/2016/08/10/">
+              08月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年8月11日" rel="archives" href="http://bookshadow.com/weblog/2016/08/11/">
+              08月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年8月12日" rel="archives" href="http://bookshadow.com/weblog/2016/08/12/">
+              08月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年8月15日" rel="archives" href="http://bookshadow.com/weblog/2016/08/15/">
+              08月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年8月18日" rel="archives" href="http://bookshadow.com/weblog/2016/08/18/">
+              08月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年8月21日" rel="archives" href="http://bookshadow.com/weblog/2016/08/21/">
+              08月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年8月28日" rel="archives" href="http://bookshadow.com/weblog/2016/08/28/">
+              08月28日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2016年9月" rel="archives" href="http://bookshadow.com/weblog/2016/09/">
+          九月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年9月2日" rel="archives" href="http://bookshadow.com/weblog/2016/09/02/">
+              09月2日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年9月4日" rel="archives" href="http://bookshadow.com/weblog/2016/09/04/">
+              09月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年9月9日" rel="archives" href="http://bookshadow.com/weblog/2016/09/09/">
+              09月9日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年9月11日" rel="archives" href="http://bookshadow.com/weblog/2016/09/11/">
+              09月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年9月18日" rel="archives" href="http://bookshadow.com/weblog/2016/09/18/">
+              09月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年9月24日" rel="archives" href="http://bookshadow.com/weblog/2016/09/24/">
+              09月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年9月25日" rel="archives" href="http://bookshadow.com/weblog/2016/09/25/">
+              09月25日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2016年10月" rel="archives" href="http://bookshadow.com/weblog/2016/10/">
+          十月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月2日" rel="archives" href="http://bookshadow.com/weblog/2016/10/02/">
+              10月2日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月9日" rel="archives" href="http://bookshadow.com/weblog/2016/10/09/">
+              10月9日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月12日" rel="archives" href="http://bookshadow.com/weblog/2016/10/12/">
+              10月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月13日" rel="archives" href="http://bookshadow.com/weblog/2016/10/13/">
+              10月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月15日" rel="archives" href="http://bookshadow.com/weblog/2016/10/15/">
+              10月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月16日" rel="archives" href="http://bookshadow.com/weblog/2016/10/16/">
+              10月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月18日" rel="archives" href="http://bookshadow.com/weblog/2016/10/18/">
+              10月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月20日" rel="archives" href="http://bookshadow.com/weblog/2016/10/20/">
+              10月20日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月21日" rel="archives" href="http://bookshadow.com/weblog/2016/10/21/">
+              10月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月23日" rel="archives" href="http://bookshadow.com/weblog/2016/10/23/">
+              10月23日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月24日" rel="archives" href="http://bookshadow.com/weblog/2016/10/24/">
+              10月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月25日" rel="archives" href="http://bookshadow.com/weblog/2016/10/25/">
+              10月25日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月27日" rel="archives" href="http://bookshadow.com/weblog/2016/10/27/">
+              10月27日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月29日" rel="archives" href="http://bookshadow.com/weblog/2016/10/29/">
+              10月29日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年10月30日" rel="archives" href="http://bookshadow.com/weblog/2016/10/30/">
+              10月30日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2016年11月" rel="archives" href="http://bookshadow.com/weblog/2016/11/">
+          十一月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年11月1日" rel="archives" href="http://bookshadow.com/weblog/2016/11/01/">
+              11月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年11月2日" rel="archives" href="http://bookshadow.com/weblog/2016/11/02/">
+              11月2日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年11月6日" rel="archives" href="http://bookshadow.com/weblog/2016/11/06/">
+              11月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年11月8日" rel="archives" href="http://bookshadow.com/weblog/2016/11/08/">
+              11月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年11月9日" rel="archives" href="http://bookshadow.com/weblog/2016/11/09/">
+              11月9日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年11月11日" rel="archives" href="http://bookshadow.com/weblog/2016/11/11/">
+              11月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年11月12日" rel="archives" href="http://bookshadow.com/weblog/2016/11/12/">
+              11月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年11月13日" rel="archives" href="http://bookshadow.com/weblog/2016/11/13/">
+              11月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年11月20日" rel="archives" href="http://bookshadow.com/weblog/2016/11/20/">
+              11月20日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年11月21日" rel="archives" href="http://bookshadow.com/weblog/2016/11/21/">
+              11月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年11月22日" rel="archives" href="http://bookshadow.com/weblog/2016/11/22/">
+              11月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年11月27日" rel="archives" href="http://bookshadow.com/weblog/2016/11/27/">
+              11月27日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年11月28日" rel="archives" href="http://bookshadow.com/weblog/2016/11/28/">
+              11月28日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2016年12月" rel="archives" href="http://bookshadow.com/weblog/2016/12/">
+          十二月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年12月4日" rel="archives" href="http://bookshadow.com/weblog/2016/12/04/">
+              12月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年12月11日" rel="archives" href="http://bookshadow.com/weblog/2016/12/11/">
+              12月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2016年12月18日" rel="archives" href="http://bookshadow.com/weblog/2016/12/18/">
+              12月18日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+    </ul>
+  </li>
+  
+  <li ltype="year" class="parent_li">
+    <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 年度归档</span>
+    <a title="归档 2015" rel="archives" href="http://bookshadow.com/weblog/2015/">2015</a>
+    
+    <ul>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2015年1月" rel="archives" href="http://bookshadow.com/weblog/2015/01/">
+          一月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月6日" rel="archives" href="http://bookshadow.com/weblog/2015/01/06/">
+              01月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月7日" rel="archives" href="http://bookshadow.com/weblog/2015/01/07/">
+              01月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月8日" rel="archives" href="http://bookshadow.com/weblog/2015/01/08/">
+              01月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月10日" rel="archives" href="http://bookshadow.com/weblog/2015/01/10/">
+              01月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月12日" rel="archives" href="http://bookshadow.com/weblog/2015/01/12/">
+              01月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月13日" rel="archives" href="http://bookshadow.com/weblog/2015/01/13/">
+              01月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月14日" rel="archives" href="http://bookshadow.com/weblog/2015/01/14/">
+              01月14日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月15日" rel="archives" href="http://bookshadow.com/weblog/2015/01/15/">
+              01月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月16日" rel="archives" href="http://bookshadow.com/weblog/2015/01/16/">
+              01月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月17日" rel="archives" href="http://bookshadow.com/weblog/2015/01/17/">
+              01月17日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月19日" rel="archives" href="http://bookshadow.com/weblog/2015/01/19/">
+              01月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月21日" rel="archives" href="http://bookshadow.com/weblog/2015/01/21/">
+              01月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月22日" rel="archives" href="http://bookshadow.com/weblog/2015/01/22/">
+              01月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月24日" rel="archives" href="http://bookshadow.com/weblog/2015/01/24/">
+              01月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月25日" rel="archives" href="http://bookshadow.com/weblog/2015/01/25/">
+              01月25日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月28日" rel="archives" href="http://bookshadow.com/weblog/2015/01/28/">
+              01月28日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月29日" rel="archives" href="http://bookshadow.com/weblog/2015/01/29/">
+              01月29日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年1月31日" rel="archives" href="http://bookshadow.com/weblog/2015/01/31/">
+              01月31日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2015年2月" rel="archives" href="http://bookshadow.com/weblog/2015/02/">
+          二月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年2月3日" rel="archives" href="http://bookshadow.com/weblog/2015/02/03/">
+              02月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年2月4日" rel="archives" href="http://bookshadow.com/weblog/2015/02/04/">
+              02月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年2月5日" rel="archives" href="http://bookshadow.com/weblog/2015/02/05/">
+              02月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年2月6日" rel="archives" href="http://bookshadow.com/weblog/2015/02/06/">
+              02月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年2月14日" rel="archives" href="http://bookshadow.com/weblog/2015/02/14/">
+              02月14日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年2月15日" rel="archives" href="http://bookshadow.com/weblog/2015/02/15/">
+              02月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年2月18日" rel="archives" href="http://bookshadow.com/weblog/2015/02/18/">
+              02月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年2月24日" rel="archives" href="http://bookshadow.com/weblog/2015/02/24/">
+              02月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年2月26日" rel="archives" href="http://bookshadow.com/weblog/2015/02/26/">
+              02月26日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2015年3月" rel="archives" href="http://bookshadow.com/weblog/2015/03/">
+          三月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年3月4日" rel="archives" href="http://bookshadow.com/weblog/2015/03/04/">
+              03月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年3月8日" rel="archives" href="http://bookshadow.com/weblog/2015/03/08/">
+              03月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年3月10日" rel="archives" href="http://bookshadow.com/weblog/2015/03/10/">
+              03月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年3月13日" rel="archives" href="http://bookshadow.com/weblog/2015/03/13/">
+              03月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年3月20日" rel="archives" href="http://bookshadow.com/weblog/2015/03/20/">
+              03月20日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年3月24日" rel="archives" href="http://bookshadow.com/weblog/2015/03/24/">
+              03月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年3月26日" rel="archives" href="http://bookshadow.com/weblog/2015/03/26/">
+              03月26日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年3月28日" rel="archives" href="http://bookshadow.com/weblog/2015/03/28/">
+              03月28日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年3月29日" rel="archives" href="http://bookshadow.com/weblog/2015/03/29/">
+              03月29日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年3月31日" rel="archives" href="http://bookshadow.com/weblog/2015/03/31/">
+              03月31日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2015年4月" rel="archives" href="http://bookshadow.com/weblog/2015/04/">
+          四月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年4月1日" rel="archives" href="http://bookshadow.com/weblog/2015/04/01/">
+              04月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年4月2日" rel="archives" href="http://bookshadow.com/weblog/2015/04/02/">
+              04月2日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年4月3日" rel="archives" href="http://bookshadow.com/weblog/2015/04/03/">
+              04月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年4月4日" rel="archives" href="http://bookshadow.com/weblog/2015/04/04/">
+              04月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年4月5日" rel="archives" href="http://bookshadow.com/weblog/2015/04/05/">
+              04月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年4月8日" rel="archives" href="http://bookshadow.com/weblog/2015/04/08/">
+              04月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年4月17日" rel="archives" href="http://bookshadow.com/weblog/2015/04/17/">
+              04月17日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年4月21日" rel="archives" href="http://bookshadow.com/weblog/2015/04/21/">
+              04月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年4月22日" rel="archives" href="http://bookshadow.com/weblog/2015/04/22/">
+              04月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年4月24日" rel="archives" href="http://bookshadow.com/weblog/2015/04/24/">
+              04月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年4月27日" rel="archives" href="http://bookshadow.com/weblog/2015/04/27/">
+              04月27日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年4月29日" rel="archives" href="http://bookshadow.com/weblog/2015/04/29/">
+              04月29日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2015年5月" rel="archives" href="http://bookshadow.com/weblog/2015/05/">
+          五月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年5月5日" rel="archives" href="http://bookshadow.com/weblog/2015/05/05/">
+              05月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年5月7日" rel="archives" href="http://bookshadow.com/weblog/2015/05/07/">
+              05月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年5月8日" rel="archives" href="http://bookshadow.com/weblog/2015/05/08/">
+              05月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年5月12日" rel="archives" href="http://bookshadow.com/weblog/2015/05/12/">
+              05月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年5月14日" rel="archives" href="http://bookshadow.com/weblog/2015/05/14/">
+              05月14日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年5月16日" rel="archives" href="http://bookshadow.com/weblog/2015/05/16/">
+              05月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年5月19日" rel="archives" href="http://bookshadow.com/weblog/2015/05/19/">
+              05月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年5月20日" rel="archives" href="http://bookshadow.com/weblog/2015/05/20/">
+              05月20日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年5月22日" rel="archives" href="http://bookshadow.com/weblog/2015/05/22/">
+              05月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年5月23日" rel="archives" href="http://bookshadow.com/weblog/2015/05/23/">
+              05月23日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年5月24日" rel="archives" href="http://bookshadow.com/weblog/2015/05/24/">
+              05月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年5月25日" rel="archives" href="http://bookshadow.com/weblog/2015/05/25/">
+              05月25日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年5月29日" rel="archives" href="http://bookshadow.com/weblog/2015/05/29/">
+              05月29日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2015年6月" rel="archives" href="http://bookshadow.com/weblog/2015/06/">
+          六月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年6月3日" rel="archives" href="http://bookshadow.com/weblog/2015/06/03/">
+              06月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年6月6日" rel="archives" href="http://bookshadow.com/weblog/2015/06/06/">
+              06月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年6月8日" rel="archives" href="http://bookshadow.com/weblog/2015/06/08/">
+              06月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年6月9日" rel="archives" href="http://bookshadow.com/weblog/2015/06/09/">
+              06月9日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年6月11日" rel="archives" href="http://bookshadow.com/weblog/2015/06/11/">
+              06月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年6月12日" rel="archives" href="http://bookshadow.com/weblog/2015/06/12/">
+              06月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年6月23日" rel="archives" href="http://bookshadow.com/weblog/2015/06/23/">
+              06月23日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年6月24日" rel="archives" href="http://bookshadow.com/weblog/2015/06/24/">
+              06月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年6月26日" rel="archives" href="http://bookshadow.com/weblog/2015/06/26/">
+              06月26日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年6月29日" rel="archives" href="http://bookshadow.com/weblog/2015/06/29/">
+              06月29日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2015年7月" rel="archives" href="http://bookshadow.com/weblog/2015/07/">
+          七月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月2日" rel="archives" href="http://bookshadow.com/weblog/2015/07/02/">
+              07月2日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月6日" rel="archives" href="http://bookshadow.com/weblog/2015/07/06/">
+              07月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月7日" rel="archives" href="http://bookshadow.com/weblog/2015/07/07/">
+              07月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月8日" rel="archives" href="http://bookshadow.com/weblog/2015/07/08/">
+              07月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月10日" rel="archives" href="http://bookshadow.com/weblog/2015/07/10/">
+              07月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月11日" rel="archives" href="http://bookshadow.com/weblog/2015/07/11/">
+              07月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月13日" rel="archives" href="http://bookshadow.com/weblog/2015/07/13/">
+              07月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月15日" rel="archives" href="http://bookshadow.com/weblog/2015/07/15/">
+              07月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月16日" rel="archives" href="http://bookshadow.com/weblog/2015/07/16/">
+              07月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月17日" rel="archives" href="http://bookshadow.com/weblog/2015/07/17/">
+              07月17日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月18日" rel="archives" href="http://bookshadow.com/weblog/2015/07/18/">
+              07月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月21日" rel="archives" href="http://bookshadow.com/weblog/2015/07/21/">
+              07月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月22日" rel="archives" href="http://bookshadow.com/weblog/2015/07/22/">
+              07月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月23日" rel="archives" href="http://bookshadow.com/weblog/2015/07/23/">
+              07月23日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月27日" rel="archives" href="http://bookshadow.com/weblog/2015/07/27/">
+              07月27日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年7月31日" rel="archives" href="http://bookshadow.com/weblog/2015/07/31/">
+              07月31日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2015年8月" rel="archives" href="http://bookshadow.com/weblog/2015/08/">
+          八月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月1日" rel="archives" href="http://bookshadow.com/weblog/2015/08/01/">
+              08月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月3日" rel="archives" href="http://bookshadow.com/weblog/2015/08/03/">
+              08月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月5日" rel="archives" href="http://bookshadow.com/weblog/2015/08/05/">
+              08月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月6日" rel="archives" href="http://bookshadow.com/weblog/2015/08/06/">
+              08月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月10日" rel="archives" href="http://bookshadow.com/weblog/2015/08/10/">
+              08月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月12日" rel="archives" href="http://bookshadow.com/weblog/2015/08/12/">
+              08月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月13日" rel="archives" href="http://bookshadow.com/weblog/2015/08/13/">
+              08月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月14日" rel="archives" href="http://bookshadow.com/weblog/2015/08/14/">
+              08月14日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月16日" rel="archives" href="http://bookshadow.com/weblog/2015/08/16/">
+              08月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月17日" rel="archives" href="http://bookshadow.com/weblog/2015/08/17/">
+              08月17日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月19日" rel="archives" href="http://bookshadow.com/weblog/2015/08/19/">
+              08月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月23日" rel="archives" href="http://bookshadow.com/weblog/2015/08/23/">
+              08月23日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月24日" rel="archives" href="http://bookshadow.com/weblog/2015/08/24/">
+              08月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月27日" rel="archives" href="http://bookshadow.com/weblog/2015/08/27/">
+              08月27日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月29日" rel="archives" href="http://bookshadow.com/weblog/2015/08/29/">
+              08月29日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年8月31日" rel="archives" href="http://bookshadow.com/weblog/2015/08/31/">
+              08月31日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2015年9月" rel="archives" href="http://bookshadow.com/weblog/2015/09/">
+          九月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年9月3日" rel="archives" href="http://bookshadow.com/weblog/2015/09/03/">
+              09月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年9月4日" rel="archives" href="http://bookshadow.com/weblog/2015/09/04/">
+              09月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年9月5日" rel="archives" href="http://bookshadow.com/weblog/2015/09/05/">
+              09月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年9月7日" rel="archives" href="http://bookshadow.com/weblog/2015/09/07/">
+              09月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年9月9日" rel="archives" href="http://bookshadow.com/weblog/2015/09/09/">
+              09月9日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年9月10日" rel="archives" href="http://bookshadow.com/weblog/2015/09/10/">
+              09月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年9月14日" rel="archives" href="http://bookshadow.com/weblog/2015/09/14/">
+              09月14日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年9月16日" rel="archives" href="http://bookshadow.com/weblog/2015/09/16/">
+              09月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年9月17日" rel="archives" href="http://bookshadow.com/weblog/2015/09/17/">
+              09月17日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年9月19日" rel="archives" href="http://bookshadow.com/weblog/2015/09/19/">
+              09月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年9月21日" rel="archives" href="http://bookshadow.com/weblog/2015/09/21/">
+              09月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年9月28日" rel="archives" href="http://bookshadow.com/weblog/2015/09/28/">
+              09月28日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年9月30日" rel="archives" href="http://bookshadow.com/weblog/2015/09/30/">
+              09月30日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2015年10月" rel="archives" href="http://bookshadow.com/weblog/2015/10/">
+          十月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年10月4日" rel="archives" href="http://bookshadow.com/weblog/2015/10/04/">
+              10月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年10月5日" rel="archives" href="http://bookshadow.com/weblog/2015/10/05/">
+              10月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年10月11日" rel="archives" href="http://bookshadow.com/weblog/2015/10/11/">
+              10月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年10月12日" rel="archives" href="http://bookshadow.com/weblog/2015/10/12/">
+              10月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年10月15日" rel="archives" href="http://bookshadow.com/weblog/2015/10/15/">
+              10月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年10月17日" rel="archives" href="http://bookshadow.com/weblog/2015/10/17/">
+              10月17日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年10月19日" rel="archives" href="http://bookshadow.com/weblog/2015/10/19/">
+              10月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年10月21日" rel="archives" href="http://bookshadow.com/weblog/2015/10/21/">
+              10月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年10月26日" rel="archives" href="http://bookshadow.com/weblog/2015/10/26/">
+              10月26日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年10月27日" rel="archives" href="http://bookshadow.com/weblog/2015/10/27/">
+              10月27日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年10月30日" rel="archives" href="http://bookshadow.com/weblog/2015/10/30/">
+              10月30日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年10月31日" rel="archives" href="http://bookshadow.com/weblog/2015/10/31/">
+              10月31日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2015年11月" rel="archives" href="http://bookshadow.com/weblog/2015/11/">
+          十一月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年11月1日" rel="archives" href="http://bookshadow.com/weblog/2015/11/01/">
+              11月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年11月3日" rel="archives" href="http://bookshadow.com/weblog/2015/11/03/">
+              11月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年11月5日" rel="archives" href="http://bookshadow.com/weblog/2015/11/05/">
+              11月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年11月10日" rel="archives" href="http://bookshadow.com/weblog/2015/11/10/">
+              11月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年11月12日" rel="archives" href="http://bookshadow.com/weblog/2015/11/12/">
+              11月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年11月18日" rel="archives" href="http://bookshadow.com/weblog/2015/11/18/">
+              11月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年11月21日" rel="archives" href="http://bookshadow.com/weblog/2015/11/21/">
+              11月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年11月24日" rel="archives" href="http://bookshadow.com/weblog/2015/11/24/">
+              11月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年11月26日" rel="archives" href="http://bookshadow.com/weblog/2015/11/26/">
+              11月26日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年11月28日" rel="archives" href="http://bookshadow.com/weblog/2015/11/28/">
+              11月28日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年11月30日" rel="archives" href="http://bookshadow.com/weblog/2015/11/30/">
+              11月30日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2015年12月" rel="archives" href="http://bookshadow.com/weblog/2015/12/">
+          十二月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年12月3日" rel="archives" href="http://bookshadow.com/weblog/2015/12/03/">
+              12月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年12月6日" rel="archives" href="http://bookshadow.com/weblog/2015/12/06/">
+              12月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年12月8日" rel="archives" href="http://bookshadow.com/weblog/2015/12/08/">
+              12月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年12月9日" rel="archives" href="http://bookshadow.com/weblog/2015/12/09/">
+              12月9日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年12月16日" rel="archives" href="http://bookshadow.com/weblog/2015/12/16/">
+              12月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年12月17日" rel="archives" href="http://bookshadow.com/weblog/2015/12/17/">
+              12月17日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年12月19日" rel="archives" href="http://bookshadow.com/weblog/2015/12/19/">
+              12月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年12月24日" rel="archives" href="http://bookshadow.com/weblog/2015/12/24/">
+              12月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年12月25日" rel="archives" href="http://bookshadow.com/weblog/2015/12/25/">
+              12月25日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年12月27日" rel="archives" href="http://bookshadow.com/weblog/2015/12/27/">
+              12月27日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2015年12月31日" rel="archives" href="http://bookshadow.com/weblog/2015/12/31/">
+              12月31日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+    </ul>
+  </li>
+  
+  <li ltype="year" class="parent_li">
+    <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 年度归档</span>
+    <a title="归档 2014" rel="archives" href="http://bookshadow.com/weblog/2014/">2014</a>
+    
+    <ul>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2014年2月" rel="archives" href="http://bookshadow.com/weblog/2014/02/">
+          二月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月5日" rel="archives" href="http://bookshadow.com/weblog/2014/02/05/">
+              02月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月6日" rel="archives" href="http://bookshadow.com/weblog/2014/02/06/">
+              02月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月7日" rel="archives" href="http://bookshadow.com/weblog/2014/02/07/">
+              02月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月8日" rel="archives" href="http://bookshadow.com/weblog/2014/02/08/">
+              02月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月9日" rel="archives" href="http://bookshadow.com/weblog/2014/02/09/">
+              02月9日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月10日" rel="archives" href="http://bookshadow.com/weblog/2014/02/10/">
+              02月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月11日" rel="archives" href="http://bookshadow.com/weblog/2014/02/11/">
+              02月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月12日" rel="archives" href="http://bookshadow.com/weblog/2014/02/12/">
+              02月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月13日" rel="archives" href="http://bookshadow.com/weblog/2014/02/13/">
+              02月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月14日" rel="archives" href="http://bookshadow.com/weblog/2014/02/14/">
+              02月14日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月15日" rel="archives" href="http://bookshadow.com/weblog/2014/02/15/">
+              02月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月16日" rel="archives" href="http://bookshadow.com/weblog/2014/02/16/">
+              02月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月17日" rel="archives" href="http://bookshadow.com/weblog/2014/02/17/">
+              02月17日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月18日" rel="archives" href="http://bookshadow.com/weblog/2014/02/18/">
+              02月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月19日" rel="archives" href="http://bookshadow.com/weblog/2014/02/19/">
+              02月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月20日" rel="archives" href="http://bookshadow.com/weblog/2014/02/20/">
+              02月20日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月21日" rel="archives" href="http://bookshadow.com/weblog/2014/02/21/">
+              02月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月22日" rel="archives" href="http://bookshadow.com/weblog/2014/02/22/">
+              02月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月25日" rel="archives" href="http://bookshadow.com/weblog/2014/02/25/">
+              02月25日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年2月28日" rel="archives" href="http://bookshadow.com/weblog/2014/02/28/">
+              02月28日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2014年3月" rel="archives" href="http://bookshadow.com/weblog/2014/03/">
+          三月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年3月1日" rel="archives" href="http://bookshadow.com/weblog/2014/03/01/">
+              03月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年3月4日" rel="archives" href="http://bookshadow.com/weblog/2014/03/04/">
+              03月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年3月5日" rel="archives" href="http://bookshadow.com/weblog/2014/03/05/">
+              03月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年3月6日" rel="archives" href="http://bookshadow.com/weblog/2014/03/06/">
+              03月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年3月7日" rel="archives" href="http://bookshadow.com/weblog/2014/03/07/">
+              03月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年3月8日" rel="archives" href="http://bookshadow.com/weblog/2014/03/08/">
+              03月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年3月10日" rel="archives" href="http://bookshadow.com/weblog/2014/03/10/">
+              03月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年3月11日" rel="archives" href="http://bookshadow.com/weblog/2014/03/11/">
+              03月11日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2014年4月" rel="archives" href="http://bookshadow.com/weblog/2014/04/">
+          四月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年4月12日" rel="archives" href="http://bookshadow.com/weblog/2014/04/12/">
+              04月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年4月14日" rel="archives" href="http://bookshadow.com/weblog/2014/04/14/">
+              04月14日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年4月18日" rel="archives" href="http://bookshadow.com/weblog/2014/04/18/">
+              04月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年4月21日" rel="archives" href="http://bookshadow.com/weblog/2014/04/21/">
+              04月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年4月22日" rel="archives" href="http://bookshadow.com/weblog/2014/04/22/">
+              04月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年4月23日" rel="archives" href="http://bookshadow.com/weblog/2014/04/23/">
+              04月23日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年4月24日" rel="archives" href="http://bookshadow.com/weblog/2014/04/24/">
+              04月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年4月27日" rel="archives" href="http://bookshadow.com/weblog/2014/04/27/">
+              04月27日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年4月29日" rel="archives" href="http://bookshadow.com/weblog/2014/04/29/">
+              04月29日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2014年5月" rel="archives" href="http://bookshadow.com/weblog/2014/05/">
+          五月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月1日" rel="archives" href="http://bookshadow.com/weblog/2014/05/01/">
+              05月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月3日" rel="archives" href="http://bookshadow.com/weblog/2014/05/03/">
+              05月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月4日" rel="archives" href="http://bookshadow.com/weblog/2014/05/04/">
+              05月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月6日" rel="archives" href="http://bookshadow.com/weblog/2014/05/06/">
+              05月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月7日" rel="archives" href="http://bookshadow.com/weblog/2014/05/07/">
+              05月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月8日" rel="archives" href="http://bookshadow.com/weblog/2014/05/08/">
+              05月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月10日" rel="archives" href="http://bookshadow.com/weblog/2014/05/10/">
+              05月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月11日" rel="archives" href="http://bookshadow.com/weblog/2014/05/11/">
+              05月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月12日" rel="archives" href="http://bookshadow.com/weblog/2014/05/12/">
+              05月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月13日" rel="archives" href="http://bookshadow.com/weblog/2014/05/13/">
+              05月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月14日" rel="archives" href="http://bookshadow.com/weblog/2014/05/14/">
+              05月14日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月15日" rel="archives" href="http://bookshadow.com/weblog/2014/05/15/">
+              05月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月16日" rel="archives" href="http://bookshadow.com/weblog/2014/05/16/">
+              05月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月17日" rel="archives" href="http://bookshadow.com/weblog/2014/05/17/">
+              05月17日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月18日" rel="archives" href="http://bookshadow.com/weblog/2014/05/18/">
+              05月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月19日" rel="archives" href="http://bookshadow.com/weblog/2014/05/19/">
+              05月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月21日" rel="archives" href="http://bookshadow.com/weblog/2014/05/21/">
+              05月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月22日" rel="archives" href="http://bookshadow.com/weblog/2014/05/22/">
+              05月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年5月23日" rel="archives" href="http://bookshadow.com/weblog/2014/05/23/">
+              05月23日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2014年6月" rel="archives" href="http://bookshadow.com/weblog/2014/06/">
+          六月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年6月1日" rel="archives" href="http://bookshadow.com/weblog/2014/06/01/">
+              06月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年6月4日" rel="archives" href="http://bookshadow.com/weblog/2014/06/04/">
+              06月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年6月7日" rel="archives" href="http://bookshadow.com/weblog/2014/06/07/">
+              06月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年6月10日" rel="archives" href="http://bookshadow.com/weblog/2014/06/10/">
+              06月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年6月15日" rel="archives" href="http://bookshadow.com/weblog/2014/06/15/">
+              06月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年6月18日" rel="archives" href="http://bookshadow.com/weblog/2014/06/18/">
+              06月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年6月26日" rel="archives" href="http://bookshadow.com/weblog/2014/06/26/">
+              06月26日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2014年7月" rel="archives" href="http://bookshadow.com/weblog/2014/07/">
+          七月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年7月1日" rel="archives" href="http://bookshadow.com/weblog/2014/07/01/">
+              07月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年7月12日" rel="archives" href="http://bookshadow.com/weblog/2014/07/12/">
+              07月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年7月20日" rel="archives" href="http://bookshadow.com/weblog/2014/07/20/">
+              07月20日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2014年8月" rel="archives" href="http://bookshadow.com/weblog/2014/08/">
+          八月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年8月6日" rel="archives" href="http://bookshadow.com/weblog/2014/08/06/">
+              08月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年8月13日" rel="archives" href="http://bookshadow.com/weblog/2014/08/13/">
+              08月13日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年8月14日" rel="archives" href="http://bookshadow.com/weblog/2014/08/14/">
+              08月14日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年8月16日" rel="archives" href="http://bookshadow.com/weblog/2014/08/16/">
+              08月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年8月18日" rel="archives" href="http://bookshadow.com/weblog/2014/08/18/">
+              08月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年8月21日" rel="archives" href="http://bookshadow.com/weblog/2014/08/21/">
+              08月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年8月22日" rel="archives" href="http://bookshadow.com/weblog/2014/08/22/">
+              08月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年8月25日" rel="archives" href="http://bookshadow.com/weblog/2014/08/25/">
+              08月25日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2014年9月" rel="archives" href="http://bookshadow.com/weblog/2014/09/">
+          九月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年9月2日" rel="archives" href="http://bookshadow.com/weblog/2014/09/02/">
+              09月2日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年9月16日" rel="archives" href="http://bookshadow.com/weblog/2014/09/16/">
+              09月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年9月17日" rel="archives" href="http://bookshadow.com/weblog/2014/09/17/">
+              09月17日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年9月18日" rel="archives" href="http://bookshadow.com/weblog/2014/09/18/">
+              09月18日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年9月19日" rel="archives" href="http://bookshadow.com/weblog/2014/09/19/">
+              09月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年9月24日" rel="archives" href="http://bookshadow.com/weblog/2014/09/24/">
+              09月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年9月26日" rel="archives" href="http://bookshadow.com/weblog/2014/09/26/">
+              09月26日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年9月30日" rel="archives" href="http://bookshadow.com/weblog/2014/09/30/">
+              09月30日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2014年10月" rel="archives" href="http://bookshadow.com/weblog/2014/10/">
+          十月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年10月2日" rel="archives" href="http://bookshadow.com/weblog/2014/10/02/">
+              10月2日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年10月7日" rel="archives" href="http://bookshadow.com/weblog/2014/10/07/">
+              10月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年10月8日" rel="archives" href="http://bookshadow.com/weblog/2014/10/08/">
+              10月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年10月11日" rel="archives" href="http://bookshadow.com/weblog/2014/10/11/">
+              10月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年10月12日" rel="archives" href="http://bookshadow.com/weblog/2014/10/12/">
+              10月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年10月15日" rel="archives" href="http://bookshadow.com/weblog/2014/10/15/">
+              10月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年10月16日" rel="archives" href="http://bookshadow.com/weblog/2014/10/16/">
+              10月16日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年10月19日" rel="archives" href="http://bookshadow.com/weblog/2014/10/19/">
+              10月19日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年10月22日" rel="archives" href="http://bookshadow.com/weblog/2014/10/22/">
+              10月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年10月25日" rel="archives" href="http://bookshadow.com/weblog/2014/10/25/">
+              10月25日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年10月26日" rel="archives" href="http://bookshadow.com/weblog/2014/10/26/">
+              10月26日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年10月29日" rel="archives" href="http://bookshadow.com/weblog/2014/10/29/">
+              10月29日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2014年11月" rel="archives" href="http://bookshadow.com/weblog/2014/11/">
+          十一月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月1日" rel="archives" href="http://bookshadow.com/weblog/2014/11/01/">
+              11月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月2日" rel="archives" href="http://bookshadow.com/weblog/2014/11/02/">
+              11月2日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月3日" rel="archives" href="http://bookshadow.com/weblog/2014/11/03/">
+              11月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月4日" rel="archives" href="http://bookshadow.com/weblog/2014/11/04/">
+              11月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月5日" rel="archives" href="http://bookshadow.com/weblog/2014/11/05/">
+              11月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月6日" rel="archives" href="http://bookshadow.com/weblog/2014/11/06/">
+              11月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月7日" rel="archives" href="http://bookshadow.com/weblog/2014/11/07/">
+              11月7日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月8日" rel="archives" href="http://bookshadow.com/weblog/2014/11/08/">
+              11月8日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月10日" rel="archives" href="http://bookshadow.com/weblog/2014/11/10/">
+              11月10日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月12日" rel="archives" href="http://bookshadow.com/weblog/2014/11/12/">
+              11月12日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月15日" rel="archives" href="http://bookshadow.com/weblog/2014/11/15/">
+              11月15日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月20日" rel="archives" href="http://bookshadow.com/weblog/2014/11/20/">
+              11月20日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月21日" rel="archives" href="http://bookshadow.com/weblog/2014/11/21/">
+              11月21日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月23日" rel="archives" href="http://bookshadow.com/weblog/2014/11/23/">
+              11月23日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月26日" rel="archives" href="http://bookshadow.com/weblog/2014/11/26/">
+              11月26日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月27日" rel="archives" href="http://bookshadow.com/weblog/2014/11/27/">
+              11月27日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月28日" rel="archives" href="http://bookshadow.com/weblog/2014/11/28/">
+              11月28日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年11月30日" rel="archives" href="http://bookshadow.com/weblog/2014/11/30/">
+              11月30日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+      <li ltype="month" class="parent_li" style="display: none;">
+        <span title="展开此级"><i class="glyphicon glyphicon-plus-sign"></i> 月度归档</span>
+        
+        <a title="归档 2014年12月" rel="archives" href="http://bookshadow.com/weblog/2014/12/">
+          十二月
+        </a>
+        
+        
+        <ul>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月1日" rel="archives" href="http://bookshadow.com/weblog/2014/12/01/">
+              12月1日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月3日" rel="archives" href="http://bookshadow.com/weblog/2014/12/03/">
+              12月3日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月4日" rel="archives" href="http://bookshadow.com/weblog/2014/12/04/">
+              12月4日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月5日" rel="archives" href="http://bookshadow.com/weblog/2014/12/05/">
+              12月5日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月6日" rel="archives" href="http://bookshadow.com/weblog/2014/12/06/">
+              12月6日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月11日" rel="archives" href="http://bookshadow.com/weblog/2014/12/11/">
+              12月11日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月14日" rel="archives" href="http://bookshadow.com/weblog/2014/12/14/">
+              12月14日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月17日" rel="archives" href="http://bookshadow.com/weblog/2014/12/17/">
+              12月17日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月20日" rel="archives" href="http://bookshadow.com/weblog/2014/12/20/">
+              12月20日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月22日" rel="archives" href="http://bookshadow.com/weblog/2014/12/22/">
+              12月22日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月24日" rel="archives" href="http://bookshadow.com/weblog/2014/12/24/">
+              12月24日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月28日" rel="archives" href="http://bookshadow.com/weblog/2014/12/28/">
+              12月28日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月30日" rel="archives" href="http://bookshadow.com/weblog/2014/12/30/">
+              12月30日
+            </a>
+            
+          </li>
+          
+          <li ltype="day" style="display: none;">
+            
+            <a title="归档 2014年12月31日" rel="archives" href="http://bookshadow.com/weblog/2014/12/31/">
+              12月31日
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+    </ul>
+  </li>
+  
+</ul>
+</div>
+</aside>
+
+
+        </div>
+      </div>
+    </div>
+<!-- <script src="http://cdn.bootcss.com/underscore.js/1.5.2/underscore.js"></script> -->
+<script src="./[LeetCode]Employee Importance _ 书影博客_files/underscore-min.js"></script>
+<!-- <script src="http://bookshadow.qiniudn.com/highlightjs/8.0/highlight.min.js"></script> -->
+<script src="./[LeetCode]Employee Importance _ 书影博客_files/highlight.min.js"></script>
+<script type="text/javascript" src="./[LeetCode]Employee Importance _ 书影博客_files/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="./[LeetCode]Employee Importance _ 书影博客_files/jquery.mousewheel-3.0.6.pack.js"></script>
+<!-- <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=120473611" type="text/javascript" charset="utf-8"></script> -->
+<script type="text/javascript">
+$(function(){
+$('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', '折叠此级');
+$('.tree li.parent_li[ltype=month] > span, .tree li.parent_li[ltype=year]:gt(0) > span').each(function (e){
+    var children = $(this).parent('li.parent_li').find(' > ul > li');
+    children.hide('fast');
+    $(this).attr('title', '展开此级').find(' > i').addClass('glyphicon-plus-sign').removeClass('glyphicon-minus-sign'); 
+});
+
+$('.tree li.parent_li > span').on('click', function (e) {
+    var children = $(this).parent('li.parent_li').find(' > ul > li');
+    if (children.is(":visible")) {
+        children.hide('fast');
+        $(this).attr('title', '展开此级').find(' > i').addClass('glyphicon-plus-sign').removeClass('glyphicon-minus-sign');
+    } else {
+        children.show('fast');
+        $(this).attr('title', '折叠此级').find(' > i').addClass('glyphicon-minus-sign').removeClass('glyphicon-plus-sign');
+    }
+    e.stopPropagation();
+});
+});
+$(".fancybox").fancybox();
+//WB2.anyWhere(function(W){
+//    W.widget.hoverCard({ id : "wbcard"});
+//});
+hljs.initHighlightingOnLoad();
+//numbering for pre>code blocks
+$(function(){
+    $('pre code').each(function(){
+        var lines = $(this).text().split('\n').length - 1;
+        var $numbering = $('<ul/>').addClass('pre-numbering');
+        $(this)
+            .addClass('has-numbering')
+            .parent()
+            .append($numbering);
+        for(i=1;i<=lines;i++){
+            $numbering.append($('<li/>').text(i));
+        }
+    });
+});
+
+//var duoshuoQuery = {short_name:"bookshadow"};
+//  (function() {
+//    var ds = document.createElement('script');
+//    ds.type = 'text/javascript';ds.async = true;
+//    ds.src = 'http://static.duoshuo.com/embed.js';
+//    ds.charset = 'UTF-8';
+//    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+//  })();
+</script>
+  </div>
+
+	<div class="container">
+		<footer class="footer">
+		  <p><a href="http://bookshadow.com/">书影</a> By <a target="_blank" href="http://weibo.com/qinjiannet/">在线疯狂</a> <a href="http://www.miitbeian.gov.cn/" target="_blank">京ICP备14015031号-1</a> <a href="http://sae.sina.com.cn/" target="_blank" title="新浪云计算"><img src="./[LeetCode]Employee Importance _ 书影博客_files/117X12px.gif" data-bd-imgshare-binded="1"></a>  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000258847'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000258847%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1000258847"><a href="http://www.cnzz.com/stat/website.php?web_id=1000258847" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="./[LeetCode]Employee Importance _ 书影博客_files/pic.gif" data-bd-imgshare-binded="1"></a></span><script src="./[LeetCode]Employee Importance _ 书影博客_files/z_stat.php" type="text/javascript"></script><script src="./[LeetCode]Employee Importance _ 书影博客_files/core.php" charset="utf-8" type="text/javascript"></script></p>
+<p style="display:none"><script type="text/javascript">
+            var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+            document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F06ffcf5f40dcb06b9b9644a4e8b9289d' type='text/javascript'%3E%3C/script%3E"));
+            </script><script src="./[LeetCode]Employee Importance _ 书影博客_files/h.js" type="text/javascript"></script><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="HolmesIcon1510625461" width="20" height="20"><param name="movie" value="http://eiv.baidu.com/hmt/icon/11.swf"><param name="flashvars" value="s=http://tongji.baidu.com/hm-web/welcome/ico?s=06ffcf5f40dcb06b9b9644a4e8b9289d"><param name="allowscriptaccess" value="always"><embed type="application/x-shockwave-flash" name="HolmesIcon1510625461" width="20" height="20" src="http://eiv.baidu.com/hmt/icon/11.swf" flashvars="s=http://tongji.baidu.com/hm-web/welcome/ico?s=06ffcf5f40dcb06b9b9644a4e8b9289d" allowscriptaccess="always"></object>
+            </p>
+		</footer>
+	</div>
+
+
+
+<iframe frameborder="0" id="bdSharePopup_selectshare1510625462588bg" class="bdselect_share_bg" style="display:none;"></iframe><div id="bdSharePopup_selectshare1510625462588box" style="display:none;" share-type="selectshare" class="bdselect_share_box" data-bd-bind="1510625462587"><div class="selectshare-mod-triangle"><div class="triangle-border"></div><div class="triangle-inset"></div></div><div class="bdselect_share_head"><span>分享到</span><a href="http://www.baidu.com/s?wd=&amp;tn=SE_hldp08010_vurs2xrp" class="bdselect_share_dialog_search" target="_blank"><i class="bdselect_share_dialog_search_i"></i><span class="bdselect_share_dialog_search_span">百度一下</span></a><a class="bdselect_share_dialog_close"></a></div><div class="bdselect_share_content"><ul class="bdselect_share_list bdshare-button-style0-24"><div class="bdselect_share_partners"></div><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" class="bds_more" data-cmd="more"></a></ul></div></div><div id="bdimgshare_1510625462591" class="sr-bdimgshare sr-bdimgshare-list sr-bdimgshare-16 sr-bdimgshare-black" style="height:36px;line-height:26px;font-size:12px;width:autopx;display:none;" data-bd-bind="1510625462591"><div class="bdimgshare-bg"></div><div class="bdimgshare-content bdsharebuttonbox bdshare-button-style0-16"><label class="bdimgshare-lbl">分享到：</label><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" onclick="return false;" class="bds_tsina" data-cmd="tsina" hidefocus=""></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" onclick="return false;" class="bds_renren" data-cmd="renren" hidefocus=""></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" onclick="return false;" class="bds_douban" data-cmd="douban" hidefocus=""></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" onclick="return false;" class="bds_weixin" data-cmd="weixin" hidefocus=""></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" onclick="return false;" class="bds_qzone" data-cmd="qzone" hidefocus=""></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" onclick="return false;" class="bds_tqq" data-cmd="tqq" hidefocus=""></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" onclick="return false;" class="bds_bdhome" data-cmd="bdhome" hidefocus=""></a><a href="http://bookshadow.com/weblog/2017/09/30/leetcode-employee-importance/#" onclick="return false;" class="bds_more" data-cmd="more" hidefocus=""></a></div></div></body></html>
